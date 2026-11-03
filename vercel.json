@@ -1,11 +1,19 @@
+
+
+
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd frontend && npm install && npm run build",
-  "outputDirectory": "frontend/dist",
-  "functions": {
-    "api/**/*.py": {
-      "excludeFiles": "{frontend/**,backend/tests/**,backend/alembic/**,**/node_modules/**}"
+  "version":2,
+  "builds":[
+    "src':"api/index.py",
+    "use":"@vercel/python"
     }
+],
+  "routes":[{
+    "src":"/api/(/*)",
+    "dest":"api/index.py"
   },
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
-}
+  {"src":"/(.*)",
+    "dest":"/public/$1"
+
+  }]}
+      
