@@ -1,32 +1,12 @@
-
 {
-  "services": {
-    "backend": {
-      "root": "backend/",
-      "entrypoint": "main:app",
-      "rewrites": [
-        {
-          "source": "/api/:path(.*)?",
-          "destination": "/:path"
-        }
-      ]
-    },
-    "frontend": {
-      "root": "frontend/"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "{frontend/**,backend/tests/**,backend/alembic/**,**/node_modules/**}"
     }
   },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": {
-        "service": "backend"
-      }
-    },
-    {
-      "source": "/(.*)",
-      "destination": {
-        "service": "frontend"
-      }
-    }
-  ]
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
 }
