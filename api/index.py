@@ -9,4 +9,4 @@ from fastapi import FastAPI  # noqa: E402
 from app.main import app as backend  # noqa: E402
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
-app.mount("/api", backend)  # /api/auth/login -> backend route /auth/login; docs at /api/docs
+app.mount("/api", backend)
