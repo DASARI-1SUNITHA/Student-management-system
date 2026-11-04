@@ -40,7 +40,16 @@ def health():
     return {"status": "ok", "docs": "/api/docs"}
 
 # Include all application routers under the /api prefix
+# app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
+# app.include_router(admin.router, prefix="/api/admin", tags=["Admin"])
+# app.include_router(faculty.router, prefix="/api/faculty", tags=["Faculty"])
+# app.include_router(student.router, prefix="/api/student", tags=["Student"])
+# app.include_router(departments.router, prefix="/api/departments", tags=["Departments"])
+# app.include_router(courses.router, prefix="/api/courses", tags=["Courses"])
+# Include auth router with the /api prefix
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
+
+# Include your other routers similarly if needed:
 app.include_router(admin.router, prefix="/api/admin", tags=["Admin"])
 app.include_router(faculty.router, prefix="/api/faculty", tags=["Faculty"])
 app.include_router(student.router, prefix="/api/student", tags=["Student"])
